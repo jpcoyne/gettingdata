@@ -24,7 +24,8 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Datas
 
 ### Read in test and train data sets using read.table
 
-``` tstDat <- read.table("./Dataset/test/X_test.txt", header = FALSE)
+```R
+ tstDat <- read.table("./Dataset/test/X_test.txt", header = FALSE)
  tstDatAct <- read.table("./Dataset/test/y_test.txt", header = FALSE)
  tstDatSub <- read.table("./Dataset/test/subject_test.txt", header = FALSE)
  trnDat <- read.table("./Dataset/train/X_train.txt", header = FALSE)
