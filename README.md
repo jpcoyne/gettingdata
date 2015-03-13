@@ -20,7 +20,7 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Datas
 5.	From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
 
-Create one R script called run_analysis.R that does the following:
+## Create one R script called run_analysis.R that does the following:
 
 Read in test and train data sets using read.table
 tstDat <- read.table("./Dataset/test/X_test.txt", header = FALSE)
