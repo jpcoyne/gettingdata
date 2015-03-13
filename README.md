@@ -24,15 +24,15 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Datas
 
 ### Read in test and train data sets using read.table
 
-tstDat <- read.table("./Dataset/test/X_test.txt", header = FALSE)
-tstDatAct <- read.table("./Dataset/test/y_test.txt", header = FALSE)
-tstDatSub <- read.table("./Dataset/test/subject_test.txt", header = FALSE)
-trnDat <- read.table("./Dataset/train/X_train.txt", header = FALSE)
-trnDatAct <- read.table("./Dataset/train/y_train.txt", header = FALSE)
-trnDatSub <- read.table("./Dataset/train/subject_train.txt", header = FALSE)
+> tstDat <- read.table("./Dataset/test/X_test.txt", header = FALSE)
+> tstDatAct <- read.table("./Dataset/test/y_test.txt", header = FALSE)
+> tstDatSub <- read.table("./Dataset/test/subject_test.txt", header = FALSE)
+> trnDat <- read.table("./Dataset/train/X_train.txt", header = FALSE)
+> trnDatAct <- read.table("./Dataset/train/y_train.txt", header = FALSE)
+> trnDatSub <- read.table("./Dataset/train/subject_train.txt", header = FALSE)
 
 ### Read in features.txt file containing index of file names
-features <- read.table("./Dataset/features.txt", header = FALSE)
+> features <- read.table("./Dataset/features.txt", header = FALSE)
 
 ### Read in activity_labels.txt file containing index if descriptive activity names
 activities <- read.table("./Dataset/activity_labels.txt", header = FALSE)
