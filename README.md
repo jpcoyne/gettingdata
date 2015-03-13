@@ -21,11 +21,12 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Datas
 
 ## Files and Descriptions
 Files in this repository include:
+
 1. README.md - https://github.com/jpcoyne/gettingdata/blob/master/README.md
-  * This file contains a description of the course project and all of the supporting files.
+   - This file contains a description of the course project and all of the supporting files.
 2. Codebook.md - https://github.com/jpcoyne/gettingdata/blob/master/Codebook.md
-  * The Codebook document contains a list of the source data, documentation of all of the steps performed to maniplualate and transform the data, and a description of the resulting tidy data output.
+   - The Codebook document contains a list of the source data, documentation of all of the steps performed to maniplualate and transform the data, and a description of the resulting tidy data output.
 3. run_analysis.R - https://github.com/jpcoyne/gettingdata/blob/master/run_analysis.R
-  * R script that contains all of the source code for this project.
+   - R script that contains all of the source code for this project.
 4. ./Dataset - https://github.com/jpcoyne/gettingdata/tree/master/Dataset
-  * Directory containing a complete copy of the Human Activity Recognition Using Smartphones Data Set from the UCI Center for Machine Learning and Intelligent Systems.
+   - Directory containing a complete copy of the Human Activity Recognition Using Smartphones Data Set from the UCI Center for Machine Learning and Intelligent Systems.
