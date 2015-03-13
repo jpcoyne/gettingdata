@@ -36,3 +36,13 @@ Files in this repository include:
 
 ## Tidy Data Principles
 
+The principles of Tidy Data introduced in this course include:
+1. Each variable should be contained in single column
+2. Each observation should be represented in its own row
+3. There should be one table for each "kind" of variable
+4. If the data set contains multiple tables, they should include an id column that allows them to be linked
+See the Lecutre on The Components of Tidy Data by Jeffery Leek - https://class.coursera.org/getdata-012/lecture/7
+and Data Sharing from Jeffery Leek  - https://github.com/jtleek/datasharing
+
+Recommended reading:  Tidy Data by Hadley Wickham from the Journal of Statisical Software
+http://www.jstatsoft.org/v59/i10/paper
