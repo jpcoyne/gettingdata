@@ -37,6 +37,7 @@ Files in this repository include:
 ## Tidy Data Principles
 
 The principles of Tidy Data introduced in this course include:
+
 1. Each variable should be contained in single column
 2. Each observation should be represented in its own row
 3. There should be one table for each "kind" of variable
