@@ -22,7 +22,9 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Datas
 
 ## Create one R script called run_analysis.R that does the following:
 
-### Read in test and train data sets using read.table
+### Approach:
+##### Read in Raw Data
+Read in test and train data sets, features column labels, and activity descriptions using read.table() and assign them to new data frames.
 
 ```R
  tstDat <- read.table("./Dataset/test/X_test.txt", header = FALSE)
@@ -31,31 +33,29 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Datas
  trnDat <- read.table("./Dataset/train/X_train.txt", header = FALSE)
  trnDatAct <- read.table("./Dataset/train/y_train.txt", header = FALSE)
  trnDatSub <- read.table("./Dataset/train/subject_train.txt", header = FALSE)
+ features <- read.table("./Dataset/features.txt", header = FALSE)
+ activities <- read.table("./Dataset/activity_labels.txt", header = FALSE)
 ```
-### Read in features.txt file containing index of file names
-> features <- read.table("./Dataset/features.txt", header = FALSE)
 
-### Read in activity_labels.txt file containing index if descriptive activity names
-> activities <- read.table("./Dataset/activity_labels.txt", header = FALSE)
+##### Use Descriptive Activity In The data Set.
+Replace activity numbers with activity names from activity_labels.txt in both the test and train activity tables.  Use the merge() command to add a column with descriptive activity names matching the activity id.  Use the select() command to activity id column, leaving only the descriptive activity label.
 
-### Uses descriptive activity names to name the activities in the data set.
-### Replace activity numbers with activity names from activity_labels.txt.
-> trnDatAct <- merge(trnDatAct, activities)
+```R
+ trnDatAct <- merge(trnDatAct, activities)
+ trnDatAct <- select(trnDatAct, -V1)
+ tstDatAct <- merge(tstDatAct, activities)
+ tstDatAct <- select(tstDatAct, -V1)
+```
+##### Merge Test and Training data into one data set.
+ 1. Use the cbind() command to add the subjects and activity columns to the test datasets.
+ 2. Use the cbind() command to add the subjects and activity columns to the train datasets.
+ 3. Use the rbind() command to combine the test and train datasets.
 
-> trnDatAct <- select(trnDatAct, -V1)
-
-> tstDatAct <- merge(tstDatAct, activities)
-
-> tstDatAct <- select(tstDatAct, -V1)
-
-### Merge Test and Training data into one data set.
-### Add the subject and activity columns to the test and train datasets.
-### Combine the test and train datasets.
-> tstDatComb <- cbind(tstDatSub, tstDatAct, tstDat)
-
-> trnDatComb <- cbind(trnDatSub, trnDatAct, trnDat)
-
-> combDat <- rbind(tstDatComb, trnDatComb)
+```R
+ tstDatComb <- cbind(tstDatSub, tstDatAct, tstDat)
+ trnDatComb <- cbind(trnDatSub, trnDatAct, trnDat)
+ combDat <- rbind(tstDatComb, trnDatComb)
+```
 
 ### Appropriately labels the data set with descriptive variable names.
 ### Apply variable names from features.txt file and add names for activity and subjects columns. 
