@@ -57,49 +57,51 @@ Replace activity numbers with activity names from activity_labels.txt in both th
  combDat <- rbind(tstDatComb, trnDatComb)
 ```
 
-### Appropriately labels the data set with descriptive variable names.
-### Apply variable names from features.txt file and add names for activity and subjects columns. 
-### Clean up column names by removing invalid characters: parenthesis, commas, etc.
-> names(combDat) <- c("subjects", "activity", as.character(features[, 2]))
+##### Appropriately Label The Data Set
+Appropriately label the data set with descriptive variable names. Clean up the variable names to remove invalid characters.  User the gsub() command to search and replace characters.  Use the make.names() command to ensure that variable names are all syntactically valid and unique.
+ 1. Apply variable names from features.txt file and add names for activity and subjects columns. 
+ 2. Clean up column names by removing invalid characters: parenthesis, commas
+ 3. Replace dash "-" characters with underscrore "_"
+ 4. Replace "t" with more descriptive "time"
+ 5. Replace "f" with more descriptive "frequency"
+ 6. Replace "Acc" with more descriptive "Accelerometer"
+ 7. Replace "Mag" with more descriptive "Magnitude"
+ 
+```R
+ names(combDat) <- c("subjects", "activity", as.character(features[, 2]))
+ names(combDat) <- gsub('\\(|\\)|\\,', "", names(combDat))
+ names(combDat) <- gsub('\\-', "_", names(combDat))
+ names(combDat) <- gsub("tBody", "timeBody", names(combDat))
+ names(combDat) <- gsub("fBody", "frequencyBody", names(combDat))
+ names(combDat) <- gsub("tGravity", "timeGravity", names(combDat))
+ names(combDat) <- gsub("fGravity", "frequencyGravity", names(combDat))
+ names(combDat) <- gsub("Acc", "Accelerometer", names(combDat))
+ names(combDat) <- gsub("Mag", "Magnitude", names(combDat))
+ names(combDat) <- gsub("BodyBody", "Body", names(combDat))
+ names(combDat) <- make.names(names=names(combDat), unique=TRUE, allow_ = TRUE)
+```
 
-> names(combDat) <- gsub('\\(|\\)|\\,', "", names(combDat))
+##### Extracts only the measurements on the mean and standard deviation for each measurement.
+User dplyr select() command to select subjects, and activity columns, and columns with names that contain "mean" and "std" in the name.
+```R
+ combDat_tbl <- tbl_df(combDat)
+ combDat_sel <- select(combDat_tbl, subjects, activity, contains("mean"), contains("std"))
+ ```
 
-> names(combDat) <- gsub('\\-', "_", names(combDat))
+##### Create a Second, Independent Tidy Data
+From the combined data set, create a second, independent tidy data. Set with the average of each variable for each activity and each subject.  Use the melt() and dcast() commands from the reshape2 library.
+ 1. Use the melt() command to create a long skinny data set of observations based on the subjects and activities ids.
+ 2. Use the dcast() command to create a tidy data set with the mean of each variable for each activity and subject.
 
-> names(combDat) <- gsub("tBody", "timeBody", names(combDat))
+```R
+ library(reshape2)
+ meltedDat <- melt(combDat_sel, id=c("subjects","activity"))
+ tidyDat <- dcast(meltedDat, subjects+activity ~ variable, mean)
+```
 
-> names(combDat) <- gsub("fBody", "frequencyBody", names(combDat))
-
-> names(combDat) <- gsub("tGravity", "timeGravity", names(combDat))
-
-> names(combDat) <- gsub("fGravity", "frequencyGravity", names(combDat))
-
-> names(combDat) <- gsub("Acc", "Accelerometer", names(combDat))
-
-> names(combDat) <- gsub("Mag", "Magnitude", names(combDat))
-
-> names(combDat) <- gsub("BodyBody", "Body", names(combDat))
-
-> names(combDat) <- make.names(names=names(combDat), unique=TRUE, allow_ = TRUE)
-
-
-### Extracts only the measurements on the mean and standard deviation for each measurement.
-### Convert to tbl_df
-### User dplyr select command to select mean, std, subjects, and activity columns
-> combDat_tbl <- tbl_df(combDat)
-
-> combDat_sel <- select(combDat_tbl, subjects, activity, contains("mean"), contains("std"))
-
-### From the combined data set, creates a second, independent tidy data 
-### Set with the average of each variable for each activity and each subject.
-### Create the tidy data set
-> library(reshape2)
-
-> meltedDat <- melt(combDat_sel, id=c("subjects","activity"))
-
-> tidyDat <- dcast(meltedDat, subjects+activity ~ variable, mean)
-
-### Write tidy data to a file
-> write.table(tidyDat, file = "./tidyDat.txt", row.names = FALSE)
+##### Write tidy data to a file
+```R
+ write.table(tidyDat, file = "./tidyDat.txt", row.names = FALSE)
+```
 
 
