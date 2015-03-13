@@ -30,3 +30,9 @@ Files in this repository include:
    - R script that contains all of the source code for this project.
 4. ./Dataset - https://github.com/jpcoyne/gettingdata/tree/master/Dataset
    - Directory containing a complete copy of the Human Activity Recognition Using Smartphones Data Set from the UCI Center for Machine Learning and Intelligent Systems.
+5. tidyDat.txt - https://github.com/jpcoyne/gettingdata/blob/master/tidyDat.txt
+   - The tidyDat.txt files is the tidy data output from this project.  It is the end result of processing the source data through the run_analysis.R script.
+
+
+## Tidy Data Principles
+
