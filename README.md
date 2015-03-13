@@ -103,7 +103,7 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Datas
 
 > tidyDat <- dcast(meltedDat, subjects+activity ~ variable, mean)
 
-Write tidy data to a file
+### Write tidy data to a file
 > write.table(tidyDat, file = "./tidyDat.txt", row.names = FALSE)
 
 
