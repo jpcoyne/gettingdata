@@ -148,6 +148,34 @@ From the combined data set, create a second, independent tidy data. Set with the
 
 ```R
  meltedDat <- melt(combDat_sel, id=c("subjects","activity"))
+ ```
+Melted Data output is a table of 885714 observations of 4 variables.  A view of the first 20 rows is provided below.
+```
+   subjects activity                     variable     value
+          7  WALKING timeBodyAccelerometer_mean_X 0.2693013
+         21  WALKING timeBodyAccelerometer_mean_X 0.2623422
+          7  WALKING timeBodyAccelerometer_mean_X 0.2383207
+          7  WALKING timeBodyAccelerometer_mean_X 0.2447143
+         18  WALKING timeBodyAccelerometer_mean_X 0.2490386
+          7  WALKING timeBodyAccelerometer_mean_X 0.2046162
+          7  WALKING timeBodyAccelerometer_mean_X 0.3191731
+          7  WALKING timeBodyAccelerometer_mean_X 0.3637475
+         11  WALKING timeBodyAccelerometer_mean_X 0.2708811
+         21  WALKING timeBodyAccelerometer_mean_X 0.2951976
+         20  WALKING timeBodyAccelerometer_mean_X 0.2519410
+          7  WALKING timeBodyAccelerometer_mean_X 0.3592946
+         22  WALKING timeBodyAccelerometer_mean_X 0.2405527
+         20  WALKING timeBodyAccelerometer_mean_X 0.2576862
+         26  WALKING timeBodyAccelerometer_mean_X 0.3369741
+         26  WALKING timeBodyAccelerometer_mean_X 0.2462884
+         11  WALKING timeBodyAccelerometer_mean_X 0.3237327
+         22  WALKING timeBodyAccelerometer_mean_X 0.2804753
+         11  WALKING timeBodyAccelerometer_mean_X 0.2590250
+         26  WALKING timeBodyAccelerometer_mean_X 0.2237301
+```
+
+ 
+ ```R
  tidyDat <- dcast(meltedDat, subjects+activity ~ variable, mean)
 ```
 
