@@ -53,13 +53,6 @@ Read in test and train data sets, features column labels, and activity descripti
  activities <- read.table("./Dataset/activity_labels.txt", header = FALSE)
 ```
 
-
-```R
- trnDatAct <- merge(trnDatAct, activities)
- trnDatAct <- select(trnDatAct, -V1)
- tstDatAct <- merge(tstDatAct, activities)
- tstDatAct <- select(tstDatAct, -V1)
-```
 ##### Combine the Test and Training data into one data set.
  1. Use the cbind() command to add the subjects and activity columns to the test datasets.
  2. Use the cbind() command to add the subjects and activity columns to the train datasets.
@@ -70,6 +63,9 @@ Read in test and train data sets, features column labels, and activity descripti
  trnDatComb <- cbind(trnDatSub, trnDatAct, trnDat)
  combDat <- rbind(tstDatComb, trnDatComb)
 ```
+
+The result of the combined data set is a table of 10299 observations of 563 varialbe.  This includes 561 measurement variables plus the subject and activityNum columns.
+
 
 ##### Appropriately Label The Data Set
 Appropriately label the data set with descriptive variable names. Clean up the variable names to remove invalid characters.  User the gsub() command to search and replace characters.  Use the make.names() command to ensure that variable names are all syntactically valid and unique.
@@ -82,7 +78,8 @@ Appropriately label the data set with descriptive variable names. Clean up the v
  7. Replace "Mag" with more descriptive "Magnitude"
  
 ```R
- names(combDat) <- c("subjects", "activity", as.character(features[, 2]))
+ names(activities) <- c("activityNum", "activity")
+ names(combDat) <- c("subjects", "activityNum", as.character(features[, 2]))
  names(combDat) <- gsub('\\(|\\)|\\,', "", names(combDat))
  names(combDat) <- gsub('\\-', "_", names(combDat))
  names(combDat) <- gsub("tBody", "timeBody", names(combDat))
@@ -93,6 +90,42 @@ Appropriately label the data set with descriptive variable names. Clean up the v
  names(combDat) <- gsub("Mag", "Magnitude", names(combDat))
  names(combDat) <- gsub("BodyBody", "Body", names(combDat))
  names(combDat) <- make.names(names=names(combDat), unique=TRUE, allow_ = TRUE)'
+```
+
+The following table is a sample of the original column names on the left and the new cleaned up columns names on the right.
+
+```
+           Original_Names                Transformed_Names
+              activityNum                      activityNum
+                 subjects                         subjects
+        tBodyAcc-mean()-X     timeBodyAccelerometer_mean_X
+        tBodyAcc-mean()-Y     timeBodyAccelerometer_mean_Y
+        tBodyAcc-mean()-Z     timeBodyAccelerometer_mean_Z
+         tBodyAcc-std()-X      timeBodyAccelerometer_std_X
+         tBodyAcc-std()-Y      timeBodyAccelerometer_std_Y
+         tBodyAcc-std()-Z      timeBodyAccelerometer_std_Z
+         tBodyAcc-mad()-X      timeBodyAccelerometer_mad_X
+         tBodyAcc-mad()-Y      timeBodyAccelerometer_mad_Y
+         tBodyAcc-mad()-Z      timeBodyAccelerometer_mad_Z
+         tBodyAcc-max()-X      timeBodyAccelerometer_max_X
+         tBodyAcc-max()-Y      timeBodyAccelerometer_max_Y
+         tBodyAcc-max()-Z      timeBodyAccelerometer_max_Z
+         tBodyAcc-min()-X      timeBodyAccelerometer_min_X
+         tBodyAcc-min()-Y      timeBodyAccelerometer_min_Y
+         tBodyAcc-min()-Z      timeBodyAccelerometer_min_Z
+           tBodyAcc-sma()        timeBodyAccelerometer_sma
+      tBodyAcc-energy()-X   timeBodyAccelerometer_energy_X
+      tBodyAcc-energy()-Y   timeBodyAccelerometer_energy_Y
+      tBodyAcc-energy()-Z   timeBodyAccelerometer_energy_Z
+         tBodyAcc-iqr()-X      timeBodyAccelerometer_iqr_X
+         tBodyAcc-iqr()-Y      timeBodyAccelerometer_iqr_Y
+         tBodyAcc-iqr()-Z      timeBodyAccelerometer_iqr_Z
+     tBodyAcc-entropy()-X  timeBodyAccelerometer_entropy_X
+     tBodyAcc-entropy()-Y  timeBodyAccelerometer_entropy_Y
+     tBodyAcc-entropy()-Z  timeBodyAccelerometer_entropy_Z
+   tBodyAcc-arCoeff()-X,1 timeBodyAccelerometer_arCoeff_X1
+   tBodyAcc-arCoeff()-X,2 timeBodyAccelerometer_arCoeff_X2
+   tBodyAcc-arCoeff()-X,3 timeBodyAccelerometer_arCoeff_X3
 ```
 
 ##### Use Descriptive Activity In The data Set.
