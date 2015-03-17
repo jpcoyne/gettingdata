@@ -178,6 +178,23 @@ Melted Data output is a table of 885714 observations of 4 variables.  A view of 
  ```R
  tidyDat <- dcast(meltedDat, subjects+activity ~ variable, mean)
 ```
+The Tidy Data output is a table of 180 observations of 88 variables.
+The example below shows the first three columns and the first ten rows.
+The table contains the mean value of every measured variable for each unique combination of subject and activity.
+```
+   subjects           activity timeBodyAccelerometer_mean_X 
+          1             LAYING                    0.2215982
+          1            SITTING                    0.2612376
+          1           STANDING                    0.2789176
+          1            WALKING                    0.2773308
+          1 WALKING_DOWNSTAIRS                    0.2891883
+          1   WALKING_UPSTAIRS                    0.2554617
+          2             LAYING                    0.2813734
+          2            SITTING                    0.2770874
+          2           STANDING                    0.2779115
+          2            WALKING                    0.2764266
+```
+
 
 ##### Write tidy data to a file
 ```R
