@@ -30,6 +30,15 @@ The objective of this project is to demonstrate the ability to collect, work wit
 	
 ## Approach:
 ### Create one R script called run_analysis.R
+
+##### Load required libraries
+
+```R
+require(data.table)
+require(dplyr)
+require(reshape2)
+```
+
 ##### Read in Raw Data
 Read in test and train data sets, features column labels, and activity descriptions using read.table() and assign them to new data frames.
 
@@ -44,8 +53,6 @@ Read in test and train data sets, features column labels, and activity descripti
  activities <- read.table("./Dataset/activity_labels.txt", header = FALSE)
 ```
 
-##### Use Descriptive Activity In The data Set.
-Replace activity numbers with activity names from activity_labels.txt in both the test and train activity tables.  Use the merge() command to add a column with descriptive activity names matching the activity id.  Use the select() command to activity id column, leaving only the descriptive activity label.
 
 ```R
  trnDatAct <- merge(trnDatAct, activities)
@@ -53,7 +60,7 @@ Replace activity numbers with activity names from activity_labels.txt in both th
  tstDatAct <- merge(tstDatAct, activities)
  tstDatAct <- select(tstDatAct, -V1)
 ```
-##### Merge Test and Training data into one data set.
+##### Combine the Test and Training data into one data set.
  1. Use the cbind() command to add the subjects and activity columns to the test datasets.
  2. Use the cbind() command to add the subjects and activity columns to the train datasets.
  3. Use the rbind() command to combine the test and train datasets.
@@ -85,13 +92,19 @@ Appropriately label the data set with descriptive variable names. Clean up the v
  names(combDat) <- gsub("Acc", "Accelerometer", names(combDat))
  names(combDat) <- gsub("Mag", "Magnitude", names(combDat))
  names(combDat) <- gsub("BodyBody", "Body", names(combDat))
- names(combDat) <- make.names(names=names(combDat), unique=TRUE, allow_ = TRUE)
+ names(combDat) <- make.names(names=names(combDat), unique=TRUE, allow_ = TRUE)'
+```
+
+##### Use Descriptive Activity In The data Set.
+Replace activity numbers with activity names from activity_labels.txt in combined data set.  Use the merge() command to add a column with descriptive activity names matching the activityNum id.  Use this command after the data has been combine into a single data set as it can alter the sort order.
+
+```R
+combDat <- merge(combDat, activities, by = "activityNum")
 ```
 
 ##### Extracts only the measurements on the mean and standard deviation for each measurement.
 User dplyr select() command to select subjects, and activity columns, and columns with names that contain "mean" and "std" in the name.
 ```R
- combDat_tbl <- tbl_df(combDat)
  combDat_sel <- select(combDat_tbl, subjects, activity, contains("mean"), contains("std"))
  ```
 
@@ -101,7 +114,6 @@ From the combined data set, create a second, independent tidy data. Set with the
  2. Use the dcast() command to create a tidy data set with the mean of each variable for each activity and subject.
 
 ```R
- library(reshape2)
  meltedDat <- melt(combDat_sel, id=c("subjects","activity"))
  tidyDat <- dcast(meltedDat, subjects+activity ~ variable, mean)
 ```
