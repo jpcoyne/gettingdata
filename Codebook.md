@@ -127,9 +127,13 @@ Melted Data output is a table of 885714 observations of 4 variables.  A view of 
          26  WALKING timeBodyAccelerometer_mean_X 0.2237301
 ```
 
- 
-The Tidy Data output is a table of 180 observations of 88 variables.
-The example below shows the first three columns and the first ten rows.
+##### Write tidy data to a file
+The tidy data file, tidyDat.txt, has been save at the root level of this repository and has been submitted to the Coursera Getting and Cleaning Data Course Project.
+
+## Tidy Data Output
+### Description of the resulting analytical data set:
+
+The end result of the Course Project is a tidy data set containing 180 observations of 88 variables and saved in a text file named tidyDat.txt.  The example below shows the first three columns and the first ten rows of the final data.
 The table contains the mean value of every measured variable for each unique combination of subject and activity.
 ```
    subjects           activity timeBodyAccelerometer_mean_X 
@@ -145,11 +149,98 @@ The table contains the mean value of every measured variable for each unique com
           2            WALKING                    0.2764266
 ```
 
-
-##### Write tidy data to a file
-The tidy data file, tidyDat.txt, has been save at the root level of this repository and has been submitted to the Coursera Getting and Cleaning Data Course Project.
-
-
+The data set includes 88 columns containing subject ID numbers, activity names, and the calculated mean value of each of the selected measurement variables for each unique combination of subject and activity.  The column names and secriptions for the tidy data set are provbided below:
+```
+                                        ColumnNames                    Description
+1                                          subjects           =  Subject ID Number
+2                                          activity   =  Descriptive Activity Name
+3                      timeBodyAccelerometer_mean_X   =  Mean value of measurement
+4                      timeBodyAccelerometer_mean_Y   =  Mean value of measurement
+5                      timeBodyAccelerometer_mean_Z   =  Mean value of measurement
+6                   timeGravityAccelerometer_mean_X   =  Mean value of measurement
+7                   timeGravityAccelerometer_mean_Y   =  Mean value of measurement
+8                   timeGravityAccelerometer_mean_Z   =  Mean value of measurement
+9                  timeBodyAccelerometerJerk_mean_X   =  Mean value of measurement
+10                 timeBodyAccelerometerJerk_mean_Y   =  Mean value of measurement
+11                 timeBodyAccelerometerJerk_mean_Z   =  Mean value of measurement
+12                              timeBodyGyro_mean_X   =  Mean value of measurement
+13                              timeBodyGyro_mean_Y   =  Mean value of measurement
+14                              timeBodyGyro_mean_Z   =  Mean value of measurement
+15                          timeBodyGyroJerk_mean_X   =  Mean value of measurement
+16                          timeBodyGyroJerk_mean_Y   =  Mean value of measurement
+17                          timeBodyGyroJerk_mean_Z   =  Mean value of measurement
+18              timeBodyAccelerometerMagnitude_mean   =  Mean value of measurement
+19           timeGravityAccelerometerMagnitude_mean   =  Mean value of measurement
+20          timeBodyAccelerometerJerkMagnitude_mean   =  Mean value of measurement
+21                       timeBodyGyroMagnitude_mean   =  Mean value of measurement
+22                   timeBodyGyroJerkMagnitude_mean   =  Mean value of measurement
+23                frequencyBodyAccelerometer_mean_X   =  Mean value of measurement
+24                frequencyBodyAccelerometer_mean_Y   =  Mean value of measurement
+25                frequencyBodyAccelerometer_mean_Z   =  Mean value of measurement
+26            frequencyBodyAccelerometer_meanFreq_X   =  Mean value of measurement
+27            frequencyBodyAccelerometer_meanFreq_Y   =  Mean value of measurement
+28            frequencyBodyAccelerometer_meanFreq_Z   =  Mean value of measurement
+29            frequencyBodyAccelerometerJerk_mean_X   =  Mean value of measurement
+30            frequencyBodyAccelerometerJerk_mean_Y   =  Mean value of measurement
+31            frequencyBodyAccelerometerJerk_mean_Z   =  Mean value of measurement
+32        frequencyBodyAccelerometerJerk_meanFreq_X   =  Mean value of measurement
+33        frequencyBodyAccelerometerJerk_meanFreq_Y   =  Mean value of measurement
+34        frequencyBodyAccelerometerJerk_meanFreq_Z   =  Mean value of measurement
+35                         frequencyBodyGyro_mean_X   =  Mean value of measurement
+36                         frequencyBodyGyro_mean_Y   =  Mean value of measurement
+37                         frequencyBodyGyro_mean_Z   =  Mean value of measurement
+38                     frequencyBodyGyro_meanFreq_X   =  Mean value of measurement
+39                     frequencyBodyGyro_meanFreq_Y   =  Mean value of measurement
+40                     frequencyBodyGyro_meanFreq_Z   =  Mean value of measurement
+41         frequencyBodyAccelerometerMagnitude_mean   =  Mean value of measurement
+42     frequencyBodyAccelerometerMagnitude_meanFreq   =  Mean value of measurement
+43     frequencyBodyAccelerometerJerkMagnitude_mean   =  Mean value of measurement
+44 frequencyBodyAccelerometerJerkMagnitude_meanFreq   =  Mean value of measurement
+45                  frequencyBodyGyroMagnitude_mean   =  Mean value of measurement
+46              frequencyBodyGyroMagnitude_meanFreq   =  Mean value of measurement
+47              frequencyBodyGyroJerkMagnitude_mean   =  Mean value of measurement
+48          frequencyBodyGyroJerkMagnitude_meanFreq   =  Mean value of measurement
+49            angletimeBodyAccelerometerMeangravity   =  Mean value of measurement
+50    angletimeBodyAccelerometerJerkMeangravityMean   =  Mean value of measurement
+51                 angletimeBodyGyroMeangravityMean   =  Mean value of measurement
+52             angletimeBodyGyroJerkMeangravityMean   =  Mean value of measurement
+53                                angleXgravityMean   =  Mean value of measurement
+54                                angleYgravityMean   =  Mean value of measurement
+55                                angleZgravityMean   =  Mean value of measurement
+56                      timeBodyAccelerometer_std_X   =  Mean value of measurement
+57                      timeBodyAccelerometer_std_Y   =  Mean value of measurement
+58                      timeBodyAccelerometer_std_Z   =  Mean value of measurement
+59                   timeGravityAccelerometer_std_X   =  Mean value of measurement
+60                   timeGravityAccelerometer_std_Y   =  Mean value of measurement
+61                   timeGravityAccelerometer_std_Z   =  Mean value of measurement
+62                  timeBodyAccelerometerJerk_std_X   =  Mean value of measurement
+63                  timeBodyAccelerometerJerk_std_Y   =  Mean value of measurement
+64                  timeBodyAccelerometerJerk_std_Z   =  Mean value of measurement
+65                               timeBodyGyro_std_X   =  Mean value of measurement
+66                               timeBodyGyro_std_Y   =  Mean value of measurement
+67                               timeBodyGyro_std_Z   =  Mean value of measurement
+68                           timeBodyGyroJerk_std_X   =  Mean value of measurement
+69                           timeBodyGyroJerk_std_Y   =  Mean value of measurement
+70                           timeBodyGyroJerk_std_Z   =  Mean value of measurement
+71               timeBodyAccelerometerMagnitude_std   =  Mean value of measurement
+72            timeGravityAccelerometerMagnitude_std   =  Mean value of measurement
+73           timeBodyAccelerometerJerkMagnitude_std   =  Mean value of measurement
+74                        timeBodyGyroMagnitude_std   =  Mean value of measurement
+75                    timeBodyGyroJerkMagnitude_std   =  Mean value of measurement
+76                 frequencyBodyAccelerometer_std_X   =  Mean value of measurement
+77                 frequencyBodyAccelerometer_std_Y   =  Mean value of measurement
+78                 frequencyBodyAccelerometer_std_Z   =  Mean value of measurement
+79             frequencyBodyAccelerometerJerk_std_X   =  Mean value of measurement
+80             frequencyBodyAccelerometerJerk_std_Y   =  Mean value of measurement
+81             frequencyBodyAccelerometerJerk_std_Z   =  Mean value of measurement
+82                          frequencyBodyGyro_std_X   =  Mean value of measurement
+83                          frequencyBodyGyro_std_Y   =  Mean value of measurement
+84                          frequencyBodyGyro_std_Z   =  Mean value of measurement
+85          frequencyBodyAccelerometerMagnitude_std   =  Mean value of measurement
+86      frequencyBodyAccelerometerJerkMagnitude_std   =  Mean value of measurement
+87                   frequencyBodyGyroMagnitude_std   =  Mean value of measurement
+88               frequencyBodyGyroJerkMagnitude_std   =  Mean value of measurement
+```
 
 
 
